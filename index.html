@@ -37,7 +37,7 @@
       position: relative;
       width: 100%;
       max-width: 1300px;
-      min-height: 900px;
+      min-height: 850px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -124,7 +124,7 @@
       border-radius: 8px;
       box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
       transition: transform 0.3s ease, z-index 0.3s;
-      width: 310px;
+      width: 285px;
     }
 
     .polaroid:hover {
@@ -134,23 +134,23 @@
 
     .polaroid img {
       width: 100%;
-      height: 270px;
+      height: 240px;
       object-fit: cover;
       border-radius: 4px;
     }
 
-    /* Messy, Overlapping Positions for 11 Photos */
-    .p1  { top: -4%;  left: -2%;  transform: rotate(-16deg); z-index: 1; }
-    .p2  { top: -6%;  left: 30%;  transform: rotate(8deg);   z-index: 3; }
-    .p3  { top: -3%;  right: -2%; transform: rotate(18deg);  z-index: 2; }
-    .p4  { top: 20%; left: -5%;  transform: rotate(-11deg); z-index: 4; }
-    .p5  { top: 18%; right: -4%; transform: rotate(-15deg); z-index: 3; }
-    .p6  { top: 48%; left: -3%;  transform: rotate(14deg);  z-index: 2; }
-    .p7  { top: 46%; right: -3%; transform: rotate(10deg);   z-index: 5; }
-    .p8  { bottom: -4%; left: -2%; transform: rotate(-19deg); z-index: 3; }
-    .p9  { bottom: -6%; left: 28%; transform: rotate(7deg);   z-index: 2; }
-    .p10 { bottom: -5%; right: 26%;transform: rotate(-9deg);  z-index: 4; }
-    .p11 { bottom: -3%; right: -2%; transform: rotate(15deg);  z-index: 2; }
+    /* Rebalanced Positions for 11 Photos to eliminate the top-right gap */
+    .p1  { top: -4%;  left: -3%;  transform: rotate(-15deg); z-index: 2; }
+    .p2  { top: -6%;  left: 20%;  transform: rotate(8deg);   z-index: 3; }
+    .p3  { top: -5%;  left: 44%;  transform: rotate(-12deg); z-index: 2; } /* Fills top-right space */
+    .p4  { top: -3%;  right: -3%; transform: rotate(16deg);  z-index: 4; }
+    .p5  { top: 22%; right: -4%; transform: rotate(-14deg); z-index: 3; }
+    .p6  { top: 48%; right: -3%; transform: rotate(10deg);   z-index: 5; }
+    .p7  { bottom: -4%; right: -2%; transform: rotate(-15deg); z-index: 3; }
+    .p8  { bottom: -6%; left: 40%;  transform: rotate(7deg);   z-index: 2; }
+    .p9  { bottom: -5%; left: 18%;  transform: rotate(-9deg);  z-index: 4; }
+    .p10 { top: 48%; left: -3%;   transform: rotate(14deg);  z-index: 2; }
+    .p11 { top: 22%; left: -4%;   transform: rotate(-11deg); z-index: 3; }
 
     /* PAGE 2: SUCCESS PAGE */
     #page2 {
