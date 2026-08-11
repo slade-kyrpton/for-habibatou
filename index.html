@@ -29,15 +29,15 @@
       align-items: center;
       overflow-x: hidden;
       position: relative;
-      padding: 2rem 1rem;
+      padding: 1rem;
     }
 
     /* Scattered Background Canvas */
     .scatter-canvas {
       position: relative;
       width: 100%;
-      max-width: 1100px;
-      min-height: 750px;
+      max-width: 1250px;
+      min-height: 850px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -45,16 +45,16 @@
 
     /* CENTER QUESTION CARD */
     .center-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
       padding: 2.5rem 2rem;
       border-radius: 24px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
       text-align: center;
-      z-index: 20;
+      z-index: 25;
       max-width: 440px;
       width: 90%;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.9);
     }
 
     .center-card h1 {
@@ -116,41 +116,41 @@
       100% { transform: translateX(0) rotate(0deg); }
     }
 
-    /* SCATTERED POLAROIDS AROUND THE CENTER */
+    /* LARGER, MESSY SCATTERED POLAROIDS */
     .polaroid {
       position: absolute;
       background: white;
-      padding: 8px 8px 18px 8px;
+      padding: 10px 10px 24px 10px;
       border-radius: 6px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
       transition: transform 0.3s ease, z-index 0.3s;
-      width: 145px;
+      width: 230px;
     }
 
     .polaroid:hover {
-      transform: scale(1.15) rotate(0deg) !important;
-      z-index: 30 !important;
+      transform: scale(1.2) rotate(0deg) !important;
+      z-index: 40 !important;
     }
 
     .polaroid img {
       width: 100%;
-      height: 125px;
+      height: 200px;
       object-fit: cover;
       border-radius: 4px;
     }
 
-    /* Positions for 11 Photos */
-    .p1  { top: 2%;  left: 5%;   transform: rotate(-12deg); z-index: 1; }
-    .p2  { top: 0%;  left: 38%;  transform: rotate(6deg);   z-index: 2; }
-    .p3  { top: 3%;  right: 6%;  transform: rotate(14deg);  z-index: 1; }
-    .p4  { top: 28%; left: 1%;   transform: rotate(-8deg);  z-index: 3; }
-    .p5  { top: 26%; right: 2%;  transform: rotate(-14deg); z-index: 2; }
-    .p6  { top: 54%; left: 3%;   transform: rotate(10deg);  z-index: 1; }
-    .p7  { top: 52%; right: 4%;  transform: rotate(8deg);   z-index: 3; }
-    .p8  { bottom: 2%; left: 4%; transform: rotate(-15deg); z-index: 2; }
-    .p9  { bottom: 1%; left: 34%; transform: rotate(5deg);   z-index: 1; }
-    .p10 { bottom: 2%; right: 30%;transform: rotate(-7deg);  z-index: 2; }
-    .p11 { bottom: 3%; right: 5%; transform: rotate(12deg);  z-index: 1; }
+    /* Messy, Overlapping Positions for 11 Photos */
+    .p1  { top: -2%;  left: 2%;   transform: rotate(-16deg); z-index: 1; }
+    .p2  { top: -4%;  left: 32%;  transform: rotate(8deg);   z-index: 3; }
+    .p3  { top: -1%;  right: 2%;  transform: rotate(18deg);  z-index: 2; }
+    .p4  { top: 22%; left: -3%;  transform: rotate(-11deg); z-index: 4; }
+    .p5  { top: 20%; right: -2%; transform: rotate(-15deg); z-index: 3; }
+    .p6  { top: 50%; left: 0%;   transform: rotate(14deg);  z-index: 2; }
+    .p7  { top: 48%; right: 1%;  transform: rotate(10deg);   z-index: 5; }
+    .p8  { bottom: -2%; left: 1%; transform: rotate(-19deg); z-index: 3; }
+    .p9  { bottom: -4%; left: 30%; transform: rotate(7deg);   z-index: 2; }
+    .p10 { bottom: -3%; right: 28%;transform: rotate(-9deg);  z-index: 4; }
+    .p11 { bottom: -1%; right: 2%; transform: rotate(15deg);  z-index: 2; }
 
     /* PAGE 2: SUCCESS PAGE */
     #page2 {
@@ -242,9 +242,9 @@
     }
 
     @media (max-width: 768px) {
-      .scatter-canvas { min-height: 600px; }
-      .polaroid { width: 100px; }
-      .polaroid img { height: 85px; }
+      .scatter-canvas { min-height: 700px; }
+      .polaroid { width: 150px; padding: 6px 6px 16px 6px; }
+      .polaroid img { height: 130px; }
       .center-card h1 { font-size: 1.6rem; }
       .giant-emoji { font-size: 9rem; }
     }
@@ -263,7 +263,7 @@
     <div class="polaroid p5"><img src="IMG_5.jpeg" alt="Photo 5"></div>
     <div class="polaroid p6"><img src="IMG_6.jpeg" alt="Photo 6"></div>
     <div class="polaroid p7"><img src="IMG_7.jpeg" alt="Photo 7"></div>
-    <div class="polaroid p8"><img src="IMG_8.jpg" alt="Photo 8"></div>
+    <div class="polaroid p8"><img src="IMG_8.jpeg" alt="Photo 8"></div>
     <div class="polaroid p9"><img src="IMG_9.jpeg" alt="Photo 9"></div>
     <div class="polaroid p10"><img src="IMG_10.jpeg" alt="Photo 10"></div>
     <div class="polaroid p11"><img src="IMG_11.jpeg" alt="Photo 11"></div>
