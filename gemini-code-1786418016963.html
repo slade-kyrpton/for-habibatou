@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Habibatou ❤️</title>
+  <style>
+    :root {
+      --bg-color: #ffdde1;
+      --card-bg: #ffffff;
+      --primary: #ff4b72;
+      --primary-hover: #e03a5f;
+      --text: #2d3748;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 1.5rem;
+    }
+
+    /* PAGE 1: QUESTION */
+    #page1 {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .main-title {
+      font-size: 2.5rem;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6);
+      z-index: 2;
+    }
+
+    /* Photo Collage Grid Around Question */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      margin-bottom: 2.5rem;
+      z-index: 2;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 10px 10px 20px 10px;
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      transform: rotate(var(--rotation, 0deg));
+      transition: transform 0.3s ease;
+    }
+
+    .polaroid:hover {
+      transform: scale(1.05) rotate(0deg);
+      z-index: 5;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      min-height: 60px;
+      z-index: 10;
+      width: 100%;
+    }
+
+    button {
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.3rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-yes {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 6px 18px rgba(255, 75, 114, 0.4);
+    }
+
+    .btn-yes:hover {
+      background-color: var(--primary-hover);
+      transform: scale(1.1);
+    }
+
+    .btn-no {
+      background-color: #ffffff;
+      color: #4a5568;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    /* Head-Shake Animation */
+    .shake-head {
+      animation: shakeHead 0.5s ease-in-out;
+    }
+
+    @keyframes shakeHead {
+      0% { transform: translateX(0); }
+      15% { transform: translateX(-15px) rotate(-8deg); }
+      30% { transform: translateX(15px) rotate(8deg); }
+      45% { transform: translateX(-12px) rotate(-6deg); }
+      60% { transform: translateX(12px) rotate(6deg); }
+      75% { transform: translateX(-6px) rotate(-3deg); }
+      90% { transform: translateX(6px) rotate(3deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+
+    /* PAGE 2: SUCCESS */
+    #page2 {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      max-width: 900px;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .success-title {
+      font-size: 3rem;
+      color: var(--primary);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+    }
+
+    .love-text {
+      font-size: 1.8rem;
+      color: #2d3748;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .arabic-text {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      direction: rtl;
+      font-family: 'Traditional Arabic', 'Amiri', serif;
+    }
+
+    /* Falling Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: #ff4b72;
+      animation: fall 4s linear forwards;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .main-title { font-size: 1.8rem; }
+      .success-title { font-size: 2.2rem; }
+      .love-text { font-size: 1.4rem; }
+      .arabic-text { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: THE QUESTION -->
+  <div id="page1">
+    <h1 class="main-title">Will you be my girlfriend Habibatou? ❤️</h1>
+
+    <div class="photo-grid">
+      <div class="polaroid" style="--rotation: -3deg;">
+        <img src="IMG_4783.jpg" alt="Memory 1">
+      </div>
+      <div class="polaroid" style="--rotation: 4deg;">
+        <img src="IMG_8696.jpg" alt="Memory 2">
+      </div>
+      <div class="polaroid" style="--rotation: -2deg;">
+        <img src="IMG_9831.jpg" alt="Memory 3">
+      </div>
+      <div class="polaroid" style="--rotation: 3deg;">
+        <img src="IMG_8681.jpg" alt="Memory 4">
+      </div>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn-yes" id="yesBtn">Yes!</button>
+      <button class="btn-no" id="noBtn">No</button>
+    </div>
+  </div>
+
+  <!-- PAGE 2: CELEBRATION -->
+  <div id="page2">
+    <h1 class="success-title">SHE SAID YESSSS! 🎉❤️</h1>
+    <div class="love-text">I love you so much</div>
+    <div class="arabic-text">فِي الدُّنْيَا وَالْآخِرَةِ</div>
+
+    <div class="photo-grid">
+      <div class="polaroid" style="--rotation: -2deg;">
+        <img src="IMG_4783.jpg" alt="Memory 1">
+      </div>
+      <div class="polaroid" style="--rotation: 3deg;">
+        <img src="IMG_8696.jpg" alt="Memory 2">
+      </div>
+      <div class="polaroid" style="--rotation: -4deg;">
+        <img src="IMG_9831.jpg" alt="Memory 3">
+      </div>
+      <div class="polaroid" style="--rotation: 2deg;">
+        <img src="IMG_8681.jpg" alt="Memory 4">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const page1 = document.getElementById('page1');
+    const page2 = document.getElementById('page2');
+
+    const playfulResponses = [
+      "Nice try! 😜",
+      "Think again! 🤔",
+      "Wrong answer! 😂",
+      "Not an option! 🙅‍♂️",
+      "Are you sure? 🥺"
+    ];
+    let responseIndex = 0;
+
+    // Head-shake effect when "No" is clicked or tapped
+    function triggerNoShake(e) {
+      if (e) e.preventDefault();
+      
+      // Add animation class
+      noBtn.classList.remove('shake-head');
+      void noBtn.offsetWidth; // Force CSS reflow to re-trigger keyframe
+      noBtn.classList.add('shake-head');
+
+      // Change button text playfully
+      noBtn.innerText = playfulResponses[responseIndex];
+      responseIndex = (responseIndex + 1) % playfulResponses.length;
+    }
+
+    noBtn.addEventListener('click', triggerNoShake);
+    noBtn.addEventListener('touchstart', triggerNoShake);
+
+    // Switch to Page 2 on "Yes"
+    yesBtn.addEventListener('click', () => {
+      page1.style.display = 'none';
+      page2.style.display = 'flex';
+      startConfetti();
+    });
+
+    // Confetti effect
+    function startConfetti() {
+      const colors = ['#ff4b72', '#ffffff', '#ffd1dc', '#ffb6c1', '#ff1493'];
+      for (let i = 0; i < 80; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti');
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = (Math.random() * 8 + 6) + 'px';
+          confetti.style.height = (Math.random() * 12 + 8) + 'px';
+          confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+          document.body.appendChild(confetti);
+
+          setTimeout(() => confetti.remove(), 4000);
+        }, i * 50);
+      }
+    }
+  </script>
+</body>
+</html>
