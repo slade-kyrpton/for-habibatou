@@ -36,8 +36,8 @@
     .scatter-canvas {
       position: relative;
       width: 100%;
-      max-width: 1250px;
-      min-height: 850px;
+      max-width: 1300px;
+      min-height: 900px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -116,41 +116,41 @@
       100% { transform: translateX(0) rotate(0deg); }
     }
 
-    /* LARGER, MESSY SCATTERED POLAROIDS */
+    /* EXTRA LARGE SCATTERED POLAROIDS FOR COMPUTER */
     .polaroid {
       position: absolute;
       background: white;
-      padding: 10px 10px 24px 10px;
-      border-radius: 6px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      padding: 12px 12px 28px 12px;
+      border-radius: 8px;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
       transition: transform 0.3s ease, z-index 0.3s;
-      width: 230px;
+      width: 310px;
     }
 
     .polaroid:hover {
-      transform: scale(1.2) rotate(0deg) !important;
+      transform: scale(1.15) rotate(0deg) !important;
       z-index: 40 !important;
     }
 
     .polaroid img {
       width: 100%;
-      height: 200px;
+      height: 270px;
       object-fit: cover;
       border-radius: 4px;
     }
 
     /* Messy, Overlapping Positions for 11 Photos */
-    .p1  { top: -2%;  left: 2%;   transform: rotate(-16deg); z-index: 1; }
-    .p2  { top: -4%;  left: 32%;  transform: rotate(8deg);   z-index: 3; }
-    .p3  { top: -1%;  right: 2%;  transform: rotate(18deg);  z-index: 2; }
-    .p4  { top: 22%; left: -3%;  transform: rotate(-11deg); z-index: 4; }
-    .p5  { top: 20%; right: -2%; transform: rotate(-15deg); z-index: 3; }
-    .p6  { top: 50%; left: 0%;   transform: rotate(14deg);  z-index: 2; }
-    .p7  { top: 48%; right: 1%;  transform: rotate(10deg);   z-index: 5; }
-    .p8  { bottom: -2%; left: 1%; transform: rotate(-19deg); z-index: 3; }
-    .p9  { bottom: -4%; left: 30%; transform: rotate(7deg);   z-index: 2; }
-    .p10 { bottom: -3%; right: 28%;transform: rotate(-9deg);  z-index: 4; }
-    .p11 { bottom: -1%; right: 2%; transform: rotate(15deg);  z-index: 2; }
+    .p1  { top: -4%;  left: -2%;  transform: rotate(-16deg); z-index: 1; }
+    .p2  { top: -6%;  left: 30%;  transform: rotate(8deg);   z-index: 3; }
+    .p3  { top: -3%;  right: -2%; transform: rotate(18deg);  z-index: 2; }
+    .p4  { top: 20%; left: -5%;  transform: rotate(-11deg); z-index: 4; }
+    .p5  { top: 18%; right: -4%; transform: rotate(-15deg); z-index: 3; }
+    .p6  { top: 48%; left: -3%;  transform: rotate(14deg);  z-index: 2; }
+    .p7  { top: 46%; right: -3%; transform: rotate(10deg);   z-index: 5; }
+    .p8  { bottom: -4%; left: -2%; transform: rotate(-19deg); z-index: 3; }
+    .p9  { bottom: -6%; left: 28%; transform: rotate(7deg);   z-index: 2; }
+    .p10 { bottom: -5%; right: 26%;transform: rotate(-9deg);  z-index: 4; }
+    .p11 { bottom: -3%; right: -2%; transform: rotate(15deg);  z-index: 2; }
 
     /* PAGE 2: SUCCESS PAGE */
     #page2 {
