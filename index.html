@@ -132,25 +132,27 @@
       z-index: 40 !important;
     }
 
-    .polaroid img {
+    .polaroid img,
+    .polaroid video {
       width: 100%;
       height: 240px;
       object-fit: cover;
       border-radius: 4px;
     }
 
-    /* Rebalanced Positions for 11 Photos to eliminate the top-right gap */
+    /* Balanced Positions for 11 Photos + 1 Video */
     .p1  { top: -4%;  left: -3%;  transform: rotate(-15deg); z-index: 2; }
-    .p2  { top: -6%;  left: 20%;  transform: rotate(8deg);   z-index: 3; }
-    .p3  { top: -5%;  left: 44%;  transform: rotate(-12deg); z-index: 2; } /* Fills top-right space */
-    .p4  { top: -3%;  right: -3%; transform: rotate(16deg);  z-index: 4; }
-    .p5  { top: 22%; right: -4%; transform: rotate(-14deg); z-index: 3; }
+    .p2  { top: -6%;  left: 21%;  transform: rotate(8deg);   z-index: 3; }
+    .p3  { top: -5%;  left: 46%;  transform: rotate(-10deg); z-index: 4; }
+    .p4  { top: -4%;  right: -3%; transform: rotate(16deg);  z-index: 2; }
+    .p5  { top: 20%; right: 18%; transform: rotate(-8deg);  z-index: 3; }
     .p6  { top: 48%; right: -3%; transform: rotate(10deg);   z-index: 5; }
     .p7  { bottom: -4%; right: -2%; transform: rotate(-15deg); z-index: 3; }
     .p8  { bottom: -6%; left: 40%;  transform: rotate(7deg);   z-index: 2; }
     .p9  { bottom: -5%; left: 18%;  transform: rotate(-9deg);  z-index: 4; }
     .p10 { top: 48%; left: -3%;   transform: rotate(14deg);  z-index: 2; }
     .p11 { top: 22%; left: -4%;   transform: rotate(-11deg); z-index: 3; }
+    .p12 { top: 22%; right: -4%;  transform: rotate(12deg);  z-index: 4; }
 
     /* PAGE 2: SUCCESS PAGE */
     #page2 {
@@ -177,10 +179,21 @@
     }
 
     .love-text {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: #2d3748;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 0.5rem;
+    }
+
+    .big-heart-emoji {
+      font-size: 5rem;
+      margin: 0.5rem 0 1rem 0;
+      animation: pulse 1.2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
     }
 
     .arabic-text {
@@ -244,18 +257,21 @@
     @media (max-width: 768px) {
       .scatter-canvas { min-height: 700px; }
       .polaroid { width: 150px; padding: 6px 6px 16px 6px; }
-      .polaroid img { height: 130px; }
+      .polaroid img,
+      .polaroid video { height: 130px; }
       .center-card h1 { font-size: 1.6rem; }
       .giant-emoji { font-size: 9rem; }
+      .big-heart-emoji { font-size: 4rem; }
+      .love-text { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- PAGE 1: SCATTERED PHOTO CANVAS & CENTER QUESTION -->
+  <!-- PAGE 1: SCATTERED PHOTO & VIDEO CANVAS -->
   <div class="scatter-canvas" id="canvas1">
 
-    <!-- 11 Scattered Photos -->
+    <!-- 11 Photos + 1 Video -->
     <div class="polaroid p1"><img src="IMG_1.jpeg" alt="Photo 1"></div>
     <div class="polaroid p2"><img src="IMG_2.jpeg" alt="Photo 2"></div>
     <div class="polaroid p3"><img src="IMG_3.jpeg" alt="Photo 3"></div>
@@ -267,6 +283,13 @@
     <div class="polaroid p9"><img src="IMG_9.jpeg" alt="Photo 9"></div>
     <div class="polaroid p10"><img src="IMG_10.jpeg" alt="Photo 10"></div>
     <div class="polaroid p11"><img src="IMG_11.jpeg" alt="Photo 11"></div>
+    
+    <!-- Video Element for top right space -->
+    <div class="polaroid p12">
+      <video autoplay loop muted playsinline>
+        <source src="video12.mp4" type="video/mp4">
+      </video>
+    </div>
 
     <!-- Center Question Card -->
     <div class="center-card">
@@ -282,7 +305,8 @@
   <!-- PAGE 2: CELEBRATION -->
   <div id="page2">
     <h1 class="success-title">SHE SAID YESSSS! 🎉❤️</h1>
-    <div class="love-text">I love you so much</div>
+    <div class="love-text">I love you most</div>
+    <div class="big-heart-emoji">❤️</div>
     <div class="arabic-text">فِي الدُّنْيَا وَالْآخِرَةِ</div>
   </div>
 
@@ -299,7 +323,6 @@
     const page2 = document.getElementById('page2');
     const brokenHeartOverlay = document.getElementById('brokenHeartOverlay');
 
-    // Sequence of button labels leading up to "Are you sure?"
     const noResponses = [
       "Nice try! 😜",
       "Think again! 🤔",
@@ -312,7 +335,6 @@
       if (e) e.preventDefault();
 
       if (clickCount < noResponses.length) {
-        // Shake button and cycle through texts
         noBtn.classList.remove('shake-head');
         void noBtn.offsetWidth;
         noBtn.classList.add('shake-head');
@@ -320,7 +342,6 @@
         noBtn.innerText = noResponses[clickCount];
         clickCount++;
       } else {
-        // Tapped NO after "Are you sure?" -> Show permanent giant broken heart
         brokenHeartOverlay.style.display = 'flex';
       }
     }
@@ -328,14 +349,12 @@
     noBtn.addEventListener('click', handleNoClick);
     noBtn.addEventListener('touchstart', handleNoClick);
 
-    // Switch to Page 2 on "Yes"
     yesBtn.addEventListener('click', () => {
       canvas1.style.display = 'none';
       page2.style.display = 'flex';
       startConfetti();
     });
 
-    // Confetti effect
     function startConfetti() {
       const colors = ['#ff4b72', '#ffffff', '#ffd1dc', '#ffb6c1', '#ff1493'];
       for (let i = 0; i < 90; i++) {
