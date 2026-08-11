@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Habibatou ❤️</title>
+  <style>
+    :root {
+      --bg-color: #f7f2ef;
+      --card-bg: #ffffff;
+      --primary: #ff4b72;
+      --primary-hover: #e03a5f;
+      --text: #2d3748;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+      padding: 2rem 1rem;
+    }
+
+    /* Scattered Background Canvas */
+    .scatter-canvas {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      min-height: 750px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* CENTER QUESTION CARD */
+    .center-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 2.5rem 2rem;
+      border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      z-index: 20;
+      max-width: 440px;
+      width: 90%;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .center-card h1 {
+      font-size: 2.1rem;
+      color: var(--primary);
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.25;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      min-height: 55px;
+    }
+
+    button {
+      border: none;
+      padding: 0.85rem 2.2rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-yes {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 75, 114, 0.4);
+    }
+
+    .btn-yes:hover {
+      background-color: var(--primary-hover);
+      transform: scale(1.08);
+    }
+
+    .btn-no {
+      background-color: #f1f5f9;
+      color: #4a5568;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Head-Shake Animation */
+    .shake-head {
+      animation: shakeHead 0.5s ease-in-out;
+    }
+
+    @keyframes shakeHead {
+      0% { transform: translateX(0); }
+      15% { transform: translateX(-12px) rotate(-6deg); }
+      30% { transform: translateX(12px) rotate(6deg); }
+      45% { transform: translateX(-8px) rotate(-4deg); }
+      60% { transform: translateX(8px) rotate(4deg); }
+      75% { transform: translateX(-4px) rotate(-2deg); }
+      90% { transform: translateX(4px) rotate(2deg); }
+      100% { transform: translateX(0) rotate(0deg); }
+    }
+
+    /* SCATTERED POLAROIDS AROUND THE CENTER */
+    .polaroid {
+      position: absolute;
+      background: white;
+      padding: 8px 8px 18px 8px;
+      border-radius: 6px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease, z-index 0.3s;
+      width: 145px;
+    }
+
+    .polaroid:hover {
+      transform: scale(1.15) rotate(0deg) !important;
+      z-index: 30 !important;
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 125px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    /* Positions for 11 Photos */
+    .p1  { top: 2%;  left: 5%;   transform: rotate(-12deg); z-index: 1; }
+    .p2  { top: 0%;  left: 38%;  transform: rotate(6deg);   z-index: 2; }
+    .p3  { top: 3%;  right: 6%;  transform: rotate(14deg);  z-index: 1; }
+    .p4  { top: 28%; left: 1%;   transform: rotate(-8deg);  z-index: 3; }
+    .p5  { top: 26%; right: 2%;  transform: rotate(-14deg); z-index: 2; }
+    .p6  { top: 54%; left: 3%;   transform: rotate(10deg);  z-index: 1; }
+    .p7  { top: 52%; right: 4%;  transform: rotate(8deg);   z-index: 3; }
+    .p8  { bottom: 2%; left: 4%; transform: rotate(-15deg); z-index: 2; }
+    .p9  { bottom: 1%; left: 34%; transform: rotate(5deg);   z-index: 1; }
+    .p10 { bottom: 2%; right: 30%;transform: rotate(-7deg);  z-index: 2; }
+    .p11 { bottom: 3%; right: 5%; transform: rotate(12deg);  z-index: 1; }
+
+    /* PAGE 2: SUCCESS PAGE */
+    #page2 {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      max-width: 900px;
+      animation: fadeIn 0.8s ease forwards;
+      z-index: 50;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .success-title {
+      font-size: 3rem;
+      color: var(--primary);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .love-text {
+      font-size: 1.8rem;
+      color: #2d3748;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .arabic-text {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      direction: rtl;
+      font-family: 'Traditional Arabic', 'Amiri', serif;
+    }
+
+    /* PERMANENT GIANT BROKEN HEART OVERLAY */
+    #brokenHeartOverlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(20, 20, 20, 0.96);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      animation: popIn 0.4s ease forwards;
+    }
+
+    .giant-emoji {
+      font-size: 14rem;
+      line-height: 1;
+      filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+      animation: pulseBroken 1.5s infinite ease-in-out;
+    }
+
+    @keyframes pulseBroken {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .broken-text {
+      color: #ffffff;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-top: 1.5rem;
+    }
+
+    /* Falling Confetti */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      animation: fall 4s linear forwards;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .scatter-canvas { min-height: 600px; }
+      .polaroid { width: 100px; }
+      .polaroid img { height: 85px; }
+      .center-card h1 { font-size: 1.6rem; }
+      .giant-emoji { font-size: 9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1: SCATTERED PHOTO CANVAS & CENTER QUESTION -->
+  <div class="scatter-canvas" id="canvas1">
+
+    <!-- 11 Scattered Photos -->
+    <div class="polaroid p1"><img src="IMG_1.jpg" alt="Photo 1"></div>
+    <div class="polaroid p2"><img src="IMG_2.jpg" alt="Photo 2"></div>
+    <div class="polaroid p3"><img src="IMG_3.jpg" alt="Photo 3"></div>
+    <div class="polaroid p4"><img src="IMG_4.jpg" alt="Photo 4"></div>
+    <div class="polaroid p5"><img src="IMG_5.jpg" alt="Photo 5"></div>
+    <div class="polaroid p6"><img src="IMG_6.jpg" alt="Photo 6"></div>
+    <div class="polaroid p7"><img src="IMG_7.jpg" alt="Photo 7"></div>
+    <div class="polaroid p8"><img src="IMG_8.jpg" alt="Photo 8"></div>
+    <div class="polaroid p9"><img src="IMG_9.jpg" alt="Photo 9"></div>
+    <div class="polaroid p10"><img src="IMG_10.jpg" alt="Photo 10"></div>
+    <div class="polaroid p11"><img src="IMG_11.jpg" alt="Photo 11"></div>
+
+    <!-- Center Question Card -->
+    <div class="center-card">
+      <h1>Will you be my girlfriend Habibatou? ❤️</h1>
+      <div class="btn-group">
+        <button class="btn-yes" id="yesBtn">Yes!</button>
+        <button class="btn-no" id="noBtn">No</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PAGE 2: CELEBRATION -->
+  <div id="page2">
+    <h1 class="success-title">SHE SAID YESSSS! 🎉❤️</h1>
+    <div class="love-text">I love you so much</div>
+    <div class="arabic-text">فِي الدُّنْيَا وَالْآخِرَةِ</div>
+  </div>
+
+  <!-- GIANT BROKEN HEART OVERLAY -->
+  <div id="brokenHeartOverlay">
+    <div class="giant-emoji">💔</div>
+    <div class="broken-text">Game Over... 💔</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+    const canvas1 = document.getElementById('canvas1');
+    const page2 = document.getElementById('page2');
+    const brokenHeartOverlay = document.getElementById('brokenHeartOverlay');
+
+    // Sequence of button labels leading up to "Are you sure?"
+    const noResponses = [
+      "Nice try! 😜",
+      "Think again! 🤔",
+      "Wrong answer! 😂",
+      "Are you sure? 🥺"
+    ];
+    let clickCount = 0;
+
+    function handleNoClick(e) {
+      if (e) e.preventDefault();
+
+      if (clickCount < noResponses.length) {
+        // Shake button and cycle through texts
+        noBtn.classList.remove('shake-head');
+        void noBtn.offsetWidth;
+        noBtn.classList.add('shake-head');
+
+        noBtn.innerText = noResponses[clickCount];
+        clickCount++;
+      } else {
+        // Tapped NO after "Are you sure?" -> Show permanent giant broken heart
+        brokenHeartOverlay.style.display = 'flex';
+      }
+    }
+
+    noBtn.addEventListener('click', handleNoClick);
+    noBtn.addEventListener('touchstart', handleNoClick);
+
+    // Switch to Page 2 on "Yes"
+    yesBtn.addEventListener('click', () => {
+      canvas1.style.display = 'none';
+      page2.style.display = 'flex';
+      startConfetti();
+    });
+
+    // Confetti effect
+    function startConfetti() {
+      const colors = ['#ff4b72', '#ffffff', '#ffd1dc', '#ffb6c1', '#ff1493'];
+      for (let i = 0; i < 90; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti');
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.width = (Math.random() * 8 + 6) + 'px';
+          confetti.style.height = (Math.random() * 12 + 8) + 'px';
+          confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+          document.body.appendChild(confetti);
+
+          setTimeout(() => confetti.remove(), 4000);
+        }, i * 45);
+      }
+    }
+  </script>
+</body>
+</html>
